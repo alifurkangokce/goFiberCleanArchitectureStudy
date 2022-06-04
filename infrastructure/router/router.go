@@ -1,8 +1,9 @@
 package router
 
 import (
-	"github.com/gofiber/fiber/v2"
 	"main/interface/controller"
+
+	"github.com/gofiber/fiber/v2"
 )
 
 func NewRouter(f fiber.Router, c controller.AppController) {
@@ -12,5 +13,9 @@ func NewRouter(f fiber.Router, c controller.AppController) {
 	})
 	f.Post("/projects", func(ctx *fiber.Ctx) error {
 		return c.Project.CreateProject(ctx)
+	})
+
+	f.Get("/satisEkipOzeti", func(ctx *fiber.Ctx) error {
+		return c.User.GetSatisEkipOzeti(ctx)
 	})
 }
